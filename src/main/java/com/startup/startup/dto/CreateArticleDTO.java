@@ -3,11 +3,9 @@ package com.startup.startup.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
-public class ArticleDTO {
+public class CreateArticleDTO {
 
     private String title;
 
@@ -15,5 +13,5 @@ public class ArticleDTO {
 
     private String content;
 
-    private LocalDateTime publishedAt;
+    private String publishedAt;
 }
