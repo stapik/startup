@@ -40,6 +40,6 @@ public class Article {
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return this.getAuthor().hashCode();
     }
 }
