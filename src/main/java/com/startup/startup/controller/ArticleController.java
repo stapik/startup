@@ -8,6 +8,7 @@ import com.startup.startup.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class ArticleController {
     private final ArticleService service;
 
     @PostMapping
-    public ArticleDTO create(CreateArticleDTO dto) {
+    public ArticleDTO create(@Valid CreateArticleDTO dto) {
         return service.create(dto);
     }
 
