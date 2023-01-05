@@ -32,7 +32,7 @@ public class ArticleService {
         article.setAuthor(dto.getAuthor());
         article.setTitle(dto.getTitle());
         article.setContent(dto.getContent());
-        article.setPublishedAt(LocalDateTime.parse(dto.getPublishedAt(), DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+        article.setPublishedAt(dto.getPublishedAt());
         return mapper.convertToDTO(repository.save(article));
     }
 

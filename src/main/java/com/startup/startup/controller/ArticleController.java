@@ -5,7 +5,6 @@ import com.startup.startup.dto.CreateArticleDTO;
 import com.startup.startup.dto.DayStatisticDTO;
 import com.startup.startup.dto.PageDTO;
 import com.startup.startup.service.ArticleService;
-import com.startup.startup.validator.ArticleValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,11 +16,9 @@ import java.util.List;
 public class ArticleController {
 
     private final ArticleService service;
-    private final ArticleValidator validator;
 
     @PostMapping
-    public ArticleDTO create(CreateArticleDTO dto) throws Exception {
-        validator.validate(dto);
+    public ArticleDTO create(CreateArticleDTO dto) {
         return service.create(dto);
     }
 

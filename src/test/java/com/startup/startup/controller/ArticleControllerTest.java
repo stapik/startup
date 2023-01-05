@@ -2,7 +2,6 @@ package com.startup.startup.controller;
 
 import com.startup.startup.dto.CreateArticleDTO;
 import com.startup.startup.service.ArticleService;
-import com.startup.startup.validator.ArticleValidator;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,17 +15,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ArticleControllerTest {
 
     ArticleController articleController = new ArticleController(
-            Mockito.mock(ArticleService.class),
-            new ArticleValidator()
+            Mockito.mock(ArticleService.class)
     );
 
     @Test
-    public void createTest() throws Exception {
+    public void createTest() {
         CreateArticleDTO dto = CreateArticleDTO.builder()
                 .content("Article content")
                 .author("Test Test")
                 .title(Strings.repeat("a", 101))
-                .publishedAt(LocalDateTime.now().toString())
+                .publishedAt(LocalDateTime.now())
                 .build();
         assertThrows(Exception.class, () -> articleController.create(dto));
 
