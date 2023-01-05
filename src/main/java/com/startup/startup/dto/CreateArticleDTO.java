@@ -3,6 +3,7 @@ package com.startup.startup.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -12,13 +13,13 @@ import java.time.LocalDateTime;
 public class CreateArticleDTO {
 
     @Size(min = 1, max = 100)
-    @NotNull
+    @NotBlank
     private String title;
 
-    @NotNull
+    @NotBlank
     private String author;
 
-    @NotNull
+    @NotBlank
     private String content;
 
     @NotNull
