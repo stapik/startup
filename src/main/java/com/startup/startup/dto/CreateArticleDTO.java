@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class CreateArticleDTO {
 
     @Size(min = 1, max = 100)
+    @NotNull
     private String title;
 
     @NotNull
