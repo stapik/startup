@@ -2,7 +2,7 @@ package com.startup.startup.controller;
 
 import com.startup.startup.dto.ArticleDTO;
 import com.startup.startup.dto.CreateArticleDTO;
-import com.startup.startup.dto.DayStatisticDTO;
+import com.startup.startup.dto.DayStatisticsDTO;
 import com.startup.startup.dto.PageDTO;
 import com.startup.startup.service.ArticleService;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class ArticleController {
     }
 
     @GetMapping("stats")
-    public List<DayStatisticDTO> stats(){
+    public List<DayStatisticsDTO> stats(){
         return service.getLastWeekStats();
     }
 }
