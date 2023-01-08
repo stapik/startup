@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 @Builder
 public class ArticleDTO {
 
+    private Long id;
+
     private String title;
 
     private String author;

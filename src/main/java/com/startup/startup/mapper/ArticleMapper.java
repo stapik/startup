@@ -10,6 +10,7 @@ public class ArticleMapper {
     public ArticleDTO convertToDTO(Article article) {
         return ArticleDTO.builder()
                 .author(article.getAuthor())
+                .id(article.getId())
                 .title(article.getTitle())
                 .content(article.getContent())
                 .publishedAt(article.getPublishedAt())

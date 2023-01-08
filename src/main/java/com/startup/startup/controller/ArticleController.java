@@ -1,9 +1,6 @@
 package com.startup.startup.controller;
 
-import com.startup.startup.dto.ArticleDTO;
-import com.startup.startup.dto.CreateArticleDTO;
-import com.startup.startup.dto.DayStatisticsDTO;
-import com.startup.startup.dto.PageDTO;
+import com.startup.startup.dto.*;
 import com.startup.startup.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +20,10 @@ public class ArticleController {
         return service.create(dto);
     }
 
+    @PatchMapping
+    public ArticleDTO update(@Valid UpdateArticleDTO dto){
+        return service.update(dto);
+    }
     @GetMapping
     public PageDTO<ArticleDTO> get(@RequestParam(value = "page", required = false) Integer page) {
         return service.list(page);

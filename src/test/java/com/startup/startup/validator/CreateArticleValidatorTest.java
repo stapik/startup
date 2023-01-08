@@ -34,12 +34,11 @@ public class CreateArticleValidatorTest {
 
     @Test
     public void createTest() {
-        CreateArticleDTO dto = CreateArticleDTO.builder()
-                .content("Article content")
-                .author("Test Test")
-                .title(Strings.repeat("a", 101))
-                .publishedAt(null)
-                .build();
+        CreateArticleDTO dto = new CreateArticleDTO();
+                dto.setContent("Article content");
+                dto.setAuthor("Test Test");
+                dto.setTitle(Strings.repeat("a", 101));
+                dto.setPublishedAt(null);
         assertFalse(validator.validate(dto).isEmpty());
 
         dto.setPublishedAt(LocalDateTime.now());

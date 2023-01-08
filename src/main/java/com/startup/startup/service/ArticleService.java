@@ -1,9 +1,6 @@
 package com.startup.startup.service;
 
-import com.startup.startup.dto.ArticleDTO;
-import com.startup.startup.dto.CreateArticleDTO;
-import com.startup.startup.dto.DayStatisticsDTO;
-import com.startup.startup.dto.PageDTO;
+import com.startup.startup.dto.*;
 import com.startup.startup.entity.Article;
 import com.startup.startup.mapper.ArticleMapper;
 import com.startup.startup.repository.ArticleJdbcRepository;
@@ -35,6 +32,15 @@ public class ArticleService {
         article.setContent(dto.getContent());
         article.setPublishedAt(dto.getPublishedAt());
         return mapper.convertToDTO(repository.save(article));
+    }
+
+    public ArticleDTO update(UpdateArticleDTO dto) {
+        jdbcRepository.update(dto);
+        return find(dto.getId());
+    }
+
+    public ArticleDTO find(Long id){
+        return jdbcRepository.findById(id);
     }
 
     public PageDTO<ArticleDTO> list(Integer pageNumber) {

@@ -9,7 +9,6 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 public class CreateArticleDTO {
 
     @Size(min = 1, max = 100)

@@ -1,6 +1,8 @@
 package com.startup.startup.repository;
 
+import com.startup.startup.dto.ArticleDTO;
 import com.startup.startup.dto.DayStatisticsDTO;
+import com.startup.startup.dto.UpdateArticleDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,6 +19,17 @@ import java.util.List;
 public class ArticleJdbcRepository {
 
     private final JdbcTemplate jdbcTemplate;
+
+    public int update(UpdateArticleDTO dto) {
+        return jdbcTemplate.update(
+                "update Article set title = ?, author = ?, content = ?, published_at = ? where id = ?",
+                dto.getTitle(), dto.getAuthor(), dto.getContent(), dto.getPublishedAt(), dto.getId()
+        );
+    }
+
+    public ArticleDTO findById(Long id) {
+        return jdbcTemplate.queryForObject("select * from Article where id = ?", this::mapArticleRowToDto, id);
+    }
 
     public List<DayStatisticsDTO> getStatisticsByDayAfterDate(@Param("d") LocalDateTime date) {
         return jdbcTemplate.query("select CAST(a.published_at AS DATE) as date, count(a.id) as count" +
@@ -44,5 +57,15 @@ public class ArticleJdbcRepository {
                 return date;
             }
         };
+    }
+
+    private ArticleDTO mapArticleRowToDto(ResultSet row, int rowNum) throws SQLException {
+        return ArticleDTO.builder()
+                .id(row.getLong("id"))
+                .title(row.getString("title"))
+                .content(row.getString("content"))
+                .author(row.getString("author"))
+                .publishedAt(row.getTimestamp("published_at").toLocalDateTime())
+                .build();
     }
 }
