@@ -30,6 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/article").hasRole("USER")
                 .antMatchers("/article/stats").hasRole("ADMIN")
                 .antMatchers("/").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
+                .and()
+                .headers().frameOptions().disable()
                 .and()
                 .httpBasic();
     }
