@@ -43,14 +43,10 @@ public class ArticleService {
         return jdbcRepository.findById(id);
     }
 
-    public PageDTO<ArticleDTO> list(Integer pageNumber) {
+    public Page<ArticleDTO> list(Integer pageNumber) {
         pageNumber = Objects.requireNonNullElse(pageNumber, 0);
         Page<Article> page = repository.findAll(PageRequest.of(pageNumber, 5));
-        PageDTO<ArticleDTO> result = new PageDTO<>();
-        result.setContent(page.map(mapper::convertToDTO).toList());
-        result.setTotalPages(page.getTotalPages());
-        result.setTotalElements(page.getTotalElements());
-        return result;
+        return page.map(mapper::convertToDTO);
     }
 
     public List<DayStatisticsDTO> getLastWeekStats() {

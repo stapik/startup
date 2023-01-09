@@ -3,6 +3,7 @@ package com.startup.startup.controller;
 import com.startup.startup.dto.*;
 import com.startup.startup.service.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ public class ArticleController {
         return service.update(dto);
     }
     @GetMapping
-    public PageDTO<ArticleDTO> get(@RequestParam(value = "page", required = false) Integer page) {
+    public Page<ArticleDTO> get(@RequestParam(value = "page", required = false) Integer page) {
         return service.list(page);
     }
 

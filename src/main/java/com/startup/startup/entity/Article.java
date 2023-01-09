@@ -15,19 +15,18 @@ public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(name = "author", nullable = false)
+    @Column(nullable = false)
     private String author;
 
-    @Column(name = "content", nullable = false)
+    @Column(nullable = false)
     private String content;
 
-    @Column(name = "published_at", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime publishedAt;
 
     @Override
@@ -40,6 +39,11 @@ public class Article {
 
     @Override
     public int hashCode() {
-        return this.getAuthor().hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + title.hashCode();
+        result = 31 * result + author.hashCode();
+        result = 31 * result + content.hashCode();
+        result = 31 * result + publishedAt.hashCode();
+        return result;
     }
 }

@@ -1,11 +1,10 @@
 package com.startup.startup.dto;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 public interface DayStatisticsDTO {
 
-    Integer getCount() throws SQLException;
+    Integer getCount();
 
-    LocalDate getDate() throws SQLException;
+    LocalDate getDate();
 }
