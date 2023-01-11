@@ -21,7 +21,7 @@ public class ArticleController {
         return service.create(dto);
     }
 
-    @PatchMapping
+    @PutMapping
     public ArticleDTO update(@Valid UpdateArticleDTO dto){
         return service.update(dto);
     }
