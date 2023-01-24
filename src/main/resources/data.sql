@@ -1,0 +1,2 @@
+insert into User values (1 , '$2a$12$TNA8eu9BifRtaoJoxa11/u3OzlhlxRs17f/gtSK0QkJMBtiPLy1dW', 'user'),
+                        (2 , '$2a$12$TNA8eu9BifRtaoJoxa11/u3OzlhlxRs17f/gtSK0QkJMBtiPLy1dW', 'admin');
