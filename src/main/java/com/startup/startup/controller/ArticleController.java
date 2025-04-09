@@ -17,14 +17,15 @@ public class ArticleController {
     private final ArticleService service;
 
     @PostMapping
-    public ArticleDTO create(@Valid CreateArticleDTO dto) {
+    public ArticleDTO create(@Valid @RequestBody CreateArticleDTO dto) {
         return service.create(dto);
     }
 
     @PutMapping
-    public ArticleDTO update(@Valid UpdateArticleDTO dto){
+    public ArticleDTO update(@Valid @RequestBody UpdateArticleDTO dto){
         return service.update(dto);
     }
+
     @GetMapping
     public Page<ArticleDTO> get(@RequestParam(value = "page", required = false) Integer page) {
         return service.list(page);

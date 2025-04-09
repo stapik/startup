@@ -1,6 +1,9 @@
 package com.startup.startup.service;
 
-import com.startup.startup.dto.*;
+import com.startup.startup.dto.ArticleDTO;
+import com.startup.startup.dto.CreateArticleDTO;
+import com.startup.startup.dto.DayStatisticsDTO;
+import com.startup.startup.dto.UpdateArticleDTO;
 import com.startup.startup.entity.Article;
 import com.startup.startup.mapper.ArticleMapper;
 import com.startup.startup.repository.ArticleJdbcRepository;
@@ -11,7 +14,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,7 +53,7 @@ public class ArticleService {
 
     public List<DayStatisticsDTO> getLastWeekStats() {
         return jdbcRepository.getStatisticsByDayAfterDate(
-                LocalDate.now().atStartOfDay().minus(6, ChronoUnit.DAYS)
+                LocalDate.now().atStartOfDay().minusDays(6)
         );
     }
 }

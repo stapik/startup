@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .headers().frameOptions().disable()
                 .and()
-                .httpBasic();
+                .httpBasic(); // enable basic auth
     }
 
     @Bean
