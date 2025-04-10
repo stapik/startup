@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/article/stats").access("hasRole('ADMIN')")
                 .antMatchers("/").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/actuator/**").access("hasRole('ADMIN')")
                 .and()
                 .headers().frameOptions().disable()
                 .and()
